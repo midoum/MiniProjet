@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\ApiController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,3 +21,6 @@ Route::post('/file',[FileController::class,'showFile']);
 Route::get('/file',function () {
     return view('welcome');
 });
+Route::get('/enc_key',[ApiController::class,'enc_key']);
+Route::get('/acc_token',[ApiController::class,'acc_token']);
+Route::get('/verify',[ApiController::class,'verify']);

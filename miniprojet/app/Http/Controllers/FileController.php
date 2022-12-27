@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Http;
 
 class FileController extends BaseController
 {
@@ -13,7 +14,7 @@ class FileController extends BaseController
     $file=$_FILES['user_file']['tmp_name'];
     // move_uploaded_file($_FILES['user_file']['tmp_name'],$uploads_dir.$name);
      
-    $output = shell_exec("py storage/python/convertdoc.py \"$file\"");
+    $output = Http::get('http://192.168.1.11:6060/polls/convert?file='.$file);
     $data=json_decode($output);
     if($data!=null){
     $text=['text'=>$data->text];
@@ -24,9 +25,19 @@ class FileController extends BaseController
     else{
         $text=['text'=>"Make shure your word document contains only text"];
     }
-    return view('welcome',$text);
+    $response2=Http::get('http://192.168.1.11:6060/polls/split?text='.$text['text']);
+    $lines=json_decode($response2);
+    $i=1;
+    $array=[];
+    foreach( $lines as $line ) {
+      array_push($array,$line->$i);
+      $i++;
+    }
+    
+    return view('welcome')->with('text',$array);
 
   }
+  
 
 
 }

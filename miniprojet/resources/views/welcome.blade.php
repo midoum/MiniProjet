@@ -33,10 +33,11 @@
     </div>
     </form><br>
     @if($_SERVER['REQUEST_METHOD'] === 'POST')
-    @if($text!=null)
-      <p>{{$text}}</p>
-    
-    @endif
+    @php
+    foreach ($text as $line ){
+      echo('<p>'.$line.'</p>');
+    }
+    @endphp
     @endif
     
   </div>
