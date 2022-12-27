@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Référencement</title>
 
         <!-- Fonts -->
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -29,7 +29,7 @@
     <label for="formFile" class="form-label">Upload your file</label>
     <input class="form-control" type="file" id="formFile" name="user_file">
     <br>
-    <button class="btn btn-primary" type="submit" >Call to action</button> 
+    <button class="btn btn-primary" type="submit" >Process</button> 
     </div>
     </form><br>
     @if($_SERVER['REQUEST_METHOD'] === 'POST')
