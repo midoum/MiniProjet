@@ -35,11 +35,17 @@
     @if($_SERVER['REQUEST_METHOD'] === 'POST')
     @php
     foreach ($text as $line ){
-      echo('<p>'.$line.'</p>');
+      echo('<p class="text_ligne" >'.$line.'</p>');
+      
     }
     @endphp
     @endif
-    
+    <style>
+      .text_ligne{
+        text-align: justify;
+        border-style: groove;
+      }
+    </style>
   </div>
 </div>
     </body>
