@@ -81,11 +81,11 @@ class FileController extends BaseController  {
     
     $response3=Http::timeout(0)->get('http://192.168.1.12:6060/polls/generate_title?text='.$T.'&key='.$key.'&token='.$token);
     $Title=json_decode($response3);
-    $response4=Http::timeout(0)->get('http://192.168.1.12:6060/polls/generate_title?text='.$T.'&key='.$key.'&token='.$token);
+    $response4=Http::timeout(0)->get('http://192.168.1.12:6060/polls/generate_description?text='.$T.'&key='.$key.'&token='.$token);
     $description=json_decode($response4);
     
     $ai_data=['titre'=>$Title->title,'description'=>$description->title];
-    print_r($ai_data);
+  
     return view('welcome')->with(['text'=>$array,'data'=>$ai_data]);
     
     
