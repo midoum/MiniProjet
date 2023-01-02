@@ -35,7 +35,7 @@
     @if($_SERVER['REQUEST_METHOD'] === 'POST')
     @php
     foreach ($text as $line ){
-      echo('<p class="text_ligne" >'.$line.'</p>');
+      echo('<p class="text_ligne" >'.$line[0]."    ".$line[1]. '</p>');
       
     }
     @endphp
