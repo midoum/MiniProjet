@@ -29,17 +29,56 @@
     <label for="formFile" class="form-label">Upload your file</label>
     <input class="form-control" type="file" id="formFile" name="user_file">
     <br>
-    <button class="btn btn-primary" type="submit" >Process</button> 
+    <button class="btn btn-primary btn-block mb-4" type="submit" name="proc" >Process</button> 
+
     </div>
     </form><br>
+    @php
+    
+    @endphp
     @if($_SERVER['REQUEST_METHOD'] === 'POST')
     @php
+    
     foreach ($text as $line ){
-      echo('<p class="text_ligne" >'.$line[0]."    ".$line[1]. '</p>');
+      echo(' <div class="card" >
+           
+           <div class="card-body ">
+             <h5 class="card-title ">
+               <span >Titre : '.$line[0].'</span>
+             </h5>
+             <p class="card-text ">
+               <span > Score : '.$line[1].'</span>
+               
+             </p>
+            
+           </div>
+         </div>');
       
     }
+   
+    echo('<input type="text" value="'.$data['titre'].'" id="titre"><button onclick="myFunction('."titre".')">Copy text</button><br>
+        <input type="text" value="'.$data['description'].'" id="description"><button onclick="myFunction('."description".')">Copy text</button> <br>
+        <script>
+                function myFunction(target) {
+            // Get the text field
+            var copyText = document.getElementById(target);
+    
+            // Select the text field
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); // For mobile devices
+    
+            // Copy the text inside the text field
+            navigator.clipboard.writeText(copyText.value);
+    
+            // Alert the copied text
+            
+          }
+        </script>
+    ');
+    
     @endphp
     @endif
+    
     <style>
       .text_ligne{
         text-align: justify;

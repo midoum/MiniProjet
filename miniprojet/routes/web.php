@@ -24,3 +24,4 @@ Route::get('/file',function () {
 Route::get('/enc_key',[ApiController::class,'enc_key']);
 Route::get('/acc_token',[ApiController::class,'acc_token']);
 Route::get('/verify',[ApiController::class,'verify']);
+Route::post('/generate_title',[FileController::class,'generate_title']);

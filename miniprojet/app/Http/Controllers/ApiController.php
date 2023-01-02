@@ -28,5 +28,15 @@ function convert($key,$token,$file){
     $data=json_decode($response);
     return $data;
 }
+function generate_title($key,$token,$text){
+    $response=Http::get('http://192.168.1.12:6060/polls/generate_title?text='.$text.'&key='.$key.'&token='.$token);
+    $data=json_decode($response);
+    return $data;
+}
+function generate_description($key,$token,$text){
+    $response=Http::get('http://192.168.1.12:6060/polls/generate_description?text='.$text.'&key='.$key.'&token='.$token);
+    $data=json_decode($response);
+    return $data;
+}
 
 }
